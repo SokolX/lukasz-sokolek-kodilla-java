@@ -10,20 +10,14 @@ import java.util.List;
 @DisplayName("Collection Test Suite")
 public class CollectionTestSuite {
 
-    private TestInfo testInfo;
-
     @BeforeEach
-    void init(TestInfo testInfo) {
-        this.testInfo = testInfo;
-    }
-    @BeforeEach
-    public void before() {
-        System.out.println("Test Case: begin");
+    public void before(TestInfo testInfo) {
+        System.out.println("Test Case: Run -> " + testInfo.getDisplayName());
     }
 
     @AfterEach
-    public void after() {
-        System.out.println("Test Case: end");
+    public void after(TestInfo testInfo) {
+        System.out.println("Test Case: End -> " + testInfo.getDisplayName());
     }
 
     @DisplayName("when list number is empty, " +
@@ -31,9 +25,7 @@ public class CollectionTestSuite {
     )
     @Test
     void testOddNumbersExterminatorEmptyList() {
-        System.out.println(testInfo.getDisplayName());
         //given
-        //List<Integer> emptyList = ;
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         //when
         List<Integer> exceptedList = oddNumbersExterminator.exterminate(List.of());
@@ -47,9 +39,7 @@ public class CollectionTestSuite {
     )
     @Test
     void testOddNumbersExterminatorNormalList() {
-        System.out.println(testInfo.getDisplayName());
         //given
-        //List<Integer> emptyList = ;
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         //when
         List<Integer> exceptedList = oddNumbersExterminator.exterminate(Arrays.asList(4, 2, 7, 1, 5, 7, 1, 4, 1));
