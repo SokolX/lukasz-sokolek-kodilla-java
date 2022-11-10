@@ -12,12 +12,12 @@ public class CollectionTestSuite {
 
     @BeforeEach
     public void before(TestInfo testInfo) {
-        System.out.println("Test Case: Run -> " + testInfo.getDisplayName());
+        System.out.println("Test Case " + testInfo.getDisplayName() + ": begin");
     }
 
     @AfterEach
     public void after(TestInfo testInfo) {
-        System.out.println("Test Case: End -> " + testInfo.getDisplayName());
+        System.out.println("Test Case " + testInfo.getDisplayName() + ": end");
     }
 
     @DisplayName("when list number is empty, " +
