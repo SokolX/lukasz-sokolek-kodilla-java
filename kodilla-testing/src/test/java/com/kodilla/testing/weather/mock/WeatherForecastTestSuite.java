@@ -1,5 +1,6 @@
 package com.kodilla.testing.weather.mock;
 
+import com.kodilla.testing.weather.stub.City;
 import com.kodilla.testing.weather.stub.Temperatures;
 import com.kodilla.testing.weather.stub.WeatherForecast;
 import org.junit.jupiter.api.Assertions;
@@ -22,12 +23,12 @@ public class WeatherForecastTestSuite {
 
     @BeforeEach
     public void before() {
-        Map<String, Double> temperaturesMap = new HashMap<>();
-        temperaturesMap.put("Rzeszow", 25.5);
-        temperaturesMap.put("Krakow", 26.2);
-        temperaturesMap.put("Wroclaw", 24.8);
-        temperaturesMap.put("Warszawa", 25.2);
-        temperaturesMap.put("Gdansk", 26.1);
+        Map<City, Double> temperaturesMap = new HashMap<>();
+        temperaturesMap.put(City.KRAKOW, 26.2);
+        temperaturesMap.put(City.WROCLAW, 24.8);
+        temperaturesMap.put(City.RZESZOW, 25.5);
+        temperaturesMap.put(City.WARSZAWA, 25.2);
+        temperaturesMap.put(City.GDANSK, 26.1);
         when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
     }
 

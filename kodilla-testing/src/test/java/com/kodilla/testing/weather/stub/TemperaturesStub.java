@@ -6,14 +6,24 @@ import java.util.Map;
 public class TemperaturesStub implements Temperatures {
 
     @Override
-    public Map<String, Double> getTemperatures() {
-        Map<String, Double> stubResult = new HashMap<>();
-        stubResult.put("Rzeszow", 25.5);
-        stubResult.put("Krakow", 26.2);
-        stubResult.put("Wroclaw", 24.8);
-        stubResult.put("Warszawa", 25.2);
-        stubResult.put("Gdansk", 26.1);
+    public Map<City, Double> getTemperatures() {
+        Map<City, Double> stubResult = new HashMap<>();
+        stubResult.put(City.KRAKOW, 26.2);
+        stubResult.put(City.WROCLAW, 24.8);
+        stubResult.put(City.RZESZOW, 25.5);
+        stubResult.put(City.WARSZAWA, 25.2);
+        stubResult.put(City.GDANSK, 26.1);
 
         return stubResult;
+    }
+
+    @Override
+    public double calculateAverageTemperature() {
+        return 0;
+    }
+
+    @Override
+    public double calculateMedianTemperature() {
+        return 0;
     }
 }

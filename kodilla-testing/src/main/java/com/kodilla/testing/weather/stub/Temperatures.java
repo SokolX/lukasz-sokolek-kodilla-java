@@ -4,7 +4,7 @@ import java.util.Map;
 
 public interface Temperatures {
 
-    Map<String, Double> getTemperatures();
+    Map<City, Double> getTemperatures();
     double calculateAverageTemperature();
     double calculateMedianTemperature();
 
