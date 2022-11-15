@@ -36,35 +36,36 @@ public class WeatherForecastTestSuite {
     void testCalculateForecastWithMock() {
         //Given
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
-
+        final int EXPECTED_QUANTITY_OF_SENSORS = 5;
         //When
         int quantityOfSensors = weatherForecast.calculateForecast().size();
 
         //Then
-        Assertions.assertEquals(5, quantityOfSensors);
+        Assertions.assertEquals(EXPECTED_QUANTITY_OF_SENSORS, quantityOfSensors);
     }
 
     @Test
     void testCalculateAverageTemperatureForecastWithMock() {
         //Given
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+        final double EXPECTED_AVG_TEMPERATURE = 25.56;
 
         //When
         double avgTemperature = weatherForecast.calculateAverageTemperature();
 
         //Then
-        Assertions.assertEquals(25.56, avgTemperature);
+        Assertions.assertEquals(EXPECTED_AVG_TEMPERATURE, avgTemperature);
     }
 
     @Test
     void testCalculateMedianTemperatureForecastWithMock() {
         //Given
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
-
+        final double EXPECTED_AVERAGE_TEMPERATURE = 25.5;
         //When
         double medianTemperature = weatherForecast.calculateMedianTemperature();
 
         //Then
-        Assertions.assertEquals(25.5, medianTemperature);
+        Assertions.assertEquals(EXPECTED_AVERAGE_TEMPERATURE, medianTemperature);
     }
 }
