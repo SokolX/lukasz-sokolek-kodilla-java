@@ -26,8 +26,8 @@ public class ShapeCollectorTestSuite {
         }
 
         @Test
-        @DisplayName("Tests remove shape to shapeCollector")
-        void shouldRemoveShapeToShapeCollector() {
+        @DisplayName("Tests remove shape from shapeCollector")
+        void shouldRemoveShapeFromShapeCollector() {
             //given
             ShapeCollector shapeCollector = new ShapeCollector();
             Shape square = new Square(4);
