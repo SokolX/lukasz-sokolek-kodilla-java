@@ -120,6 +120,20 @@ class BookDirectoryTestSuite {
         assertEquals(5, theListBooksOfUser1.size());
     }
 
+    @Test
+    void testListBooksInHandsOfUserWithoutFirstName() {
+        // Given
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        LibraryUser libraryUser1 = new LibraryUser(null, "User", "54071181872");
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser1)).thenReturn(generateListOfNBooks(5));
+
+        // When
+        List<Book> theListBooksOfUser1 = bookLibrary.listBooksInHandsOf(libraryUser1);
+
+        // Then
+        assertEquals(5, theListBooksOfUser1.size());
+    }
+
     private List<Book> generateListOfNBooks(int booksQuantity) {
         List<Book> resultList = new ArrayList<>();
         for (int n = 1; n <= booksQuantity; n++) {

@@ -22,10 +22,6 @@ public class BookLibrary {
     }
 
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
-        if (libraryUser.getFirstname() != null && libraryUser.getLastname() != null) {
-            return libraryDatabase.listBooksInHandsOf(libraryUser);
-        } else {
-            return null;
-        }
+        return libraryDatabase.listBooksInHandsOf(libraryUser);
     }
 }
