@@ -24,10 +24,10 @@ public class ShapeCollector {
     }
 
     public String showFigures() {
-        String result = "";
+        StringBuilder result = new StringBuilder("");
         for (Shape shape : shapes) {
-            result = result + shape.getShapeName() + ", area: " + shape.getArea() + "\n";
+            result.append(shape.getShapeName() + ", area: " + shape.getArea() + "\n");
         }
-        return result;
+        return result.toString();
     }
 }
