@@ -1,7 +1,5 @@
 package com.kodilla.stream.forumuser;
 
-import com.kodilla.stream.book.Book;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
