@@ -34,13 +34,14 @@ public class StreamMain {
         expressionExecutor.executeExpression(3, 4, FunctionalCalculator::subBFromA);
         expressionExecutor.executeExpression(3, 4, FunctionalCalculator::divideAByB);
 
+        final String TEXT_TO_MODIFY = "Text To Modify";
         PoemBeautifier poemBeautifier = new PoemBeautifier();
-        poemBeautifier.beautify("Text To Modify", textToModify -> textToModify.toUpperCase());
-        poemBeautifier.beautify("Text To Modify", textToModify -> textToModify.toLowerCase());
-        poemBeautifier.beautify("Text To Modify", textToModify -> "ABC" + textToModify.toLowerCase() + "ABC");
-        poemBeautifier.beautify("Text To Modify", textToModify -> textToModify.replace(" ", ""));
-        poemBeautifier.beautify("Text To Modify", textToModify -> textToModify.repeat(10));
-        poemBeautifier.beautify("Text To Modify", textToModify -> textToModify.substring(5,10));
+        poemBeautifier.beautify(TEXT_TO_MODIFY, PoemDecoratorUtils.bigger);
+        poemBeautifier.beautify(TEXT_TO_MODIFY, PoemDecoratorUtils.smaller);
+        poemBeautifier.beautify(TEXT_TO_MODIFY, PoemDecoratorUtils.textBetweenABC);
+        poemBeautifier.beautify(TEXT_TO_MODIFY, PoemDecoratorUtils.noSpace);
+        poemBeautifier.beautify(TEXT_TO_MODIFY, PoemDecoratorUtils.repeatTen);
+        poemBeautifier.beautify(TEXT_TO_MODIFY, PoemDecoratorUtils.cut);
 
         System.out.println("Using Stream to generate even numbers from 1 to 20");
         NumbersGenerator.generateEven(20);
@@ -82,10 +83,10 @@ public class StreamMain {
         Forum forumUsers = new Forum();
 
         Map<Integer, ForumUser> users = forumUsers.getUserList().stream()
-                .filter(user -> user.getSex() == 'M')
-                .filter(user -> user.getDateOfBirth().isBefore(LocalDate.now().minusYears(20)))
-                .filter(user -> user.getCounterOfPublishedPosts() >= 1)
-                .collect(Collectors.toMap(ForumUser::getId, user -> user));
+                .filter(user -> user.sex() == 'M')
+                .filter(user -> user.dateOfBirth().isBefore(LocalDate.now().minusYears(20)))
+                .filter(user -> user.counterOfPublishedPosts() >= 1)
+                .collect(Collectors.toMap(ForumUser::id, user -> user));
 
         for (Map.Entry<Integer, ForumUser> entry : users.entrySet()) {
             System.out.println(entry.getKey() + " = " + entry.getValue());
