@@ -13,7 +13,6 @@ public class WorldTestSuite {
     @Test
     void testGetPeopleQuantity() {
         //given
-
         Country poland = new Country("Poland", new BigDecimal("38000000"));
         Country germany = new Country("Germany", new BigDecimal("83000000"));
         Country france = new Country("France", new BigDecimal("67000000"));
@@ -29,6 +28,7 @@ public class WorldTestSuite {
         Country egypt = new Country("Egypt", new BigDecimal("104300000"));
         Continent africa = new Continent("Africa", List.of(morocco, senegal, egypt));
         World world = new World(Arrays.asList(europe, asia, africa));
+
         //when
         BigDecimal counterPeople = world.getPeopleQuantity();
 
