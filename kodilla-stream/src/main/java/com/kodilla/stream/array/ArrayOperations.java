@@ -6,11 +6,11 @@ public interface ArrayOperations {
 
     static double getAverage(int[] numbers) {
 
-        IntStream.range(0, numbers.length)
+        IntStream.of(numbers)
                 .forEach(System.out::println);
 
-        return IntStream.range(0, numbers.length)
+        return IntStream.of(numbers)
                 .average()
-                .getAsDouble();
+                .orElse(0.0);
     }
 }
