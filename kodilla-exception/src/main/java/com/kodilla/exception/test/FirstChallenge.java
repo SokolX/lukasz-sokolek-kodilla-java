@@ -9,17 +9,14 @@ public class FirstChallenge {
         return a / b;
     }
 
-    /**
-     * This main can throw an ArithmeticException!!!
-     * @param args
-     */
     public static void main(String[] args) {
 
         FirstChallenge firstChallenge = new FirstChallenge();
 
         try {
             double result = firstChallenge.divide(3, 0);
-        } catch (Exception e) {
+            System.out.println("Divide result = " + result);
+        } catch (ArithmeticException e) {
             System.out.println(e);
         } finally {
             System.out.println("End of operation divide. ");
