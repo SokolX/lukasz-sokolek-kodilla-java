@@ -17,7 +17,7 @@ public class WorldTestSuite {
         Country poland = new Country("Poland", new BigDecimal("38000000"));
         Country germany = new Country("Germany", new BigDecimal("83000000"));
         Country france = new Country("France", new BigDecimal("67000000"));
-        Continent europe = new Continent("Europe", Arrays.asList(poland, germany, france));
+        Continent europe = new Continent("Europe", List.of(poland, germany, france));
 
         Country japan = new Country("Japan", new BigDecimal("125000000"));
         Country northKorea = new Country("North Korea", new BigDecimal("25000000"));
