@@ -34,7 +34,7 @@ public class BoardTestSuite {
         List<Task> tasks = project.getTaskLists().stream()
                 .flatMap(l -> l.getTasks().stream())
                 .filter(t -> t.getAssignedUser().equals(user))
-                .collect(toList());
+                .toList();
 
         //then
         assertEquals(2, tasks.size());
@@ -95,10 +95,9 @@ public class BoardTestSuite {
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(Task::getCreated)
                 .map(d -> ChronoUnit.DAYS.between(d, LocalDate.now()))
-                .collect(toList())
-                .stream().mapToDouble(Double::valueOf)
+                .mapToDouble(Double::valueOf)
                 .average()
-                .getAsDouble();
+                .orElse(0.0);
 
         //then
         assertEquals(10, longTasks);
