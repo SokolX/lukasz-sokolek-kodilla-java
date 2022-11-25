@@ -27,7 +27,7 @@ public class WorldTestSuite {
         Country senegal = new Country("Senegal", new BigDecimal("17200000"));
         Country egypt = new Country("Egypt", new BigDecimal("104300000"));
         Continent africa = new Continent("Africa", List.of(morocco, senegal, egypt));
-        World world = new World(Arrays.asList(europe, asia, africa));
+        World world = new World(List.of(europe, asia, africa));
 
         //when
         BigDecimal counterPeople = world.getPeopleQuantity();
