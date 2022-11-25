@@ -2,6 +2,7 @@ package com.kodilla.stream.portfolio;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class TaskList {
 
@@ -34,6 +35,11 @@ public class TaskList {
                 "name='" + name + '\'' + ",\n" +
                 "tasks=\n" + tasks + "\n" +
                 '}' + "\n";
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tasks, name);
     }
 
     @Override
