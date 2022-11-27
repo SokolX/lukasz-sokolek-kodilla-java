@@ -16,7 +16,7 @@ public class FileReaderTestSuite {
     }
 
     @Test
-    void whenFileDosentExistsReadFileShouldThrowException() {
+    void whenFileDoesntExistsReadFileShouldThrowException() {
         // given
         FileReader fileReader = new FileReader();
         String fileName = "nie_ma_takiego_pliku.txt";
