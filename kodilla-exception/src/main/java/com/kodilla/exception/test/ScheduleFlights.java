@@ -7,24 +7,18 @@ import java.util.Optional;
 public class ScheduleFlights {
 
     public boolean findFilght(Flight flight) throws RouteNotFoundException {
-        Map<String, Boolean> possiblityFligts = new HashMap<>();
-        possiblityFligts.put("Warsaw", true);
-        possiblityFligts.put("New York", true);
-        possiblityFligts.put("Miami", false);
-        possiblityFligts.put("London", true);
-        possiblityFligts.put("Paris", false);
-        possiblityFligts.put("Berlin", true);
+        Map<String, Boolean> possibilityFlights = new HashMap<>();
+        possibilityFlights.put("Warsaw", true);
+        possibilityFlights.put("New York", true);
+        possibilityFlights.put("Miami", false);
+        possibilityFlights.put("London", true);
+        possibilityFlights.put("Paris", false);
+        possibilityFlights.put("Berlin", true);
 
-        Optional.ofNullable(possiblityFligts.get(flight.arrivalAirport())).
+        Optional.ofNullable(possibilityFlights.get(flight.arrivalAirport())).
                 orElseThrow(() -> new RouteNotFoundException("Airport doesn't exists"));
 
-        Boolean value = false;
-        for(Map.Entry<String, Boolean> entry : possiblityFligts.entrySet()) {
-            if (entry.getKey() == flight.arrivalAirport()) {
-                value = entry.getValue();
-            }
-        }
-        return value;
+        return Optional.ofNullable(possibilityFlights.get(flight.arrivalAirport())).get();
     }
 
     public static void main(String[] args) {
