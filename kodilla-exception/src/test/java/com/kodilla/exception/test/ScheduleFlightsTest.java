@@ -14,11 +14,9 @@ class ScheduleFlightsTest {
         // when & then
         assertAll(
                 () -> assertThrows(Exception.class,
-                        () -> scheduleFlights.findFilght(new Flight("Warsaw", "Barcelona"))),
-                () -> assertEquals(true,
-                        scheduleFlights.findFilght(new Flight("Berlin", "Warsaw"))),
-                () -> assertEquals(false,
-                        scheduleFlights.findFilght(new Flight("Warsaw", "Paris")))
+                        () -> scheduleFlights.findFlights(new Flight("Warsaw", "Barcelona"))),
+                () -> assertTrue(scheduleFlights.findFlights(new Flight("Berlin", "Warsaw"))),
+                () -> assertFalse(scheduleFlights.findFlights(new Flight("Warsaw", "Paris")))
         );
     }
 }

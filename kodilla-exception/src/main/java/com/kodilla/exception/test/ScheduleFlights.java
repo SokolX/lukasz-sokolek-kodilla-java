@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class ScheduleFlights {
 
-    public boolean findFilght(Flight flight) throws RouteNotFoundException {
+    public boolean findFlights(Flight flight) throws RouteNotFoundException {
         Map<String, Boolean> possibilityFlights = new HashMap<>();
         possibilityFlights.put("Warsaw", true);
         possibilityFlights.put("New York", true);
@@ -15,10 +15,8 @@ public class ScheduleFlights {
         possibilityFlights.put("Paris", false);
         possibilityFlights.put("Berlin", true);
 
-        Optional.ofNullable(possibilityFlights.get(flight.arrivalAirport())).
+        return Optional.ofNullable(possibilityFlights.get(flight.arrivalAirport())).
                 orElseThrow(() -> new RouteNotFoundException("Airport doesn't exists"));
-
-        return Optional.ofNullable(possibilityFlights.get(flight.arrivalAirport())).get();
     }
 
     public static void main(String[] args) {
@@ -29,7 +27,7 @@ public class ScheduleFlights {
             System.out.println("Deparature from "
                     + flight.arrivalAirport()
                     + " = "
-                    + scheduleFlights.findFilght(flight));
+                    + scheduleFlights.findFlights(flight));
         } catch (RouteNotFoundException e) {
             System.out.println(e);
         } finally {
