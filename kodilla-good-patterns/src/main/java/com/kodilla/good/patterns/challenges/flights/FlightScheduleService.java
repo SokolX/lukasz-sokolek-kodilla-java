@@ -25,8 +25,6 @@ public class FlightScheduleService implements ScheduleService {
 
     @Override
     public void findDeparatureToArrival(String deparaturesFromCity, String arrivalCity) {
-        boolean isDirect = false;
-
         System.out.println("\nFlights from " + deparaturesFromCity + " to " + arrivalCity);
         List<Flight> directFlightFromDeparaturesToArraial = flightsSchedule.getFlights()
                 .stream()
