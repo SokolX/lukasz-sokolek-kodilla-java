@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challanges.example;
+package com.kodilla.good.patterns.challenges.example1;
 
 public class MailService implements InformationService {
     @Override
