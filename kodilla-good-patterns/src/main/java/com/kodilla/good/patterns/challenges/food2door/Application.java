@@ -16,12 +16,12 @@ public class Application {
 
         OrderRequest orderRequestInExtraFoodShop = new OrderRequest(extraFoodShop, LocalDateTime.now(), butter, 500);
         OrderRequest orderRequestInHealthyShop = new OrderRequest(healthyShop, LocalDateTime.now(), oatBran, 120);
-        OrderRequest orderRequestInGluteFreeShop = new OrderRequest(glutenFreeShop, LocalDateTime.now(), watermelon, 120);
+        OrderRequest orderRequestInGlutenFreeShop = new OrderRequest(glutenFreeShop, LocalDateTime.now(), watermelon, 120);
 
         OrderProcessor orderProcessor = new OrderProcessor(new MailService(), new ProductOrderService(), new OrderProductRepository());
         orderProcessor.process(orderRequestInExtraFoodShop);
         orderProcessor.process(orderRequestInHealthyShop);
-        orderProcessor.process(orderRequestInGluteFreeShop);
+        orderProcessor.process(orderRequestInGlutenFreeShop);
 
     }
 }
