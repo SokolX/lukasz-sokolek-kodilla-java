@@ -1,6 +1,6 @@
-package com.kodilla.good.patterns.challanges.task1;
+package com.kodilla.good.patterns.challenges.task1;
 
-import com.kodilla.good.patterns.challanges.example.User;
+import com.kodilla.good.patterns.challenges.example1.User;
 
 public class OrderDto {
 
