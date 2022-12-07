@@ -1,5 +1,7 @@
-package com.kodilla.good.patterns.challenges.food2door;
+package com.kodilla.good.patterns.challenges.food2door.dto;
 
+
+import com.kodilla.good.patterns.challenges.food2door.model.Producer;
 
 public class ProducerDto {
 

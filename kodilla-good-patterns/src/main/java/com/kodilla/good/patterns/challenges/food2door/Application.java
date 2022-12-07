@@ -1,5 +1,13 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
+import com.kodilla.good.patterns.challenges.food2door.model.OrderRequest;
+import com.kodilla.good.patterns.challenges.food2door.model.Producer;
+import com.kodilla.good.patterns.challenges.food2door.model.Product;
+import com.kodilla.good.patterns.challenges.food2door.processor.OrderProcessor;
+import com.kodilla.good.patterns.challenges.food2door.repository.OrderProductRepository;
+import com.kodilla.good.patterns.challenges.food2door.service.MailService;
+import com.kodilla.good.patterns.challenges.food2door.service.ProductOrderService;
+
 import java.time.LocalDateTime;
 
 public class Application {

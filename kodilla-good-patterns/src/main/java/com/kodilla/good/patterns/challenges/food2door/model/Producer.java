@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.food2door;
+package com.kodilla.good.patterns.challenges.food2door.model;
 
 public class Producer {
 
