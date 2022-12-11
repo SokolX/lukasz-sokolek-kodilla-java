@@ -48,9 +48,9 @@ public class AdvancedStatisticsForumTestSuite {
         advancedStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        Assertions.assertEquals(0, advancedStatistics.numberOfPosts);
-        Assertions.assertEquals(0.0, advancedStatistics.numbersOfPostsPerUser);
-        Assertions.assertEquals(0.0, advancedStatistics.numbersOfCommentsPerPost);
+        Assertions.assertEquals(0, advancedStatistics.getNumberOfPosts());
+        Assertions.assertEquals(0.0, advancedStatistics.getNumbersOfPostsPerUser());
+        Assertions.assertEquals(0.0, advancedStatistics.getNumbersOfCommentsPerPost());
     }
 
     @Test
@@ -63,9 +63,9 @@ public class AdvancedStatisticsForumTestSuite {
         advancedStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        Assertions.assertEquals(1000, advancedStatistics.numberOfPosts);
-        Assertions.assertEquals(0.0, advancedStatistics.numbersOfPostsPerUser);
-        Assertions.assertEquals(0.0, advancedStatistics.numbersOfCommentsPerPost);
+        Assertions.assertEquals(1000, advancedStatistics.getNumberOfPosts());
+        Assertions.assertEquals(0.0, advancedStatistics.getNumbersOfPostsPerUser());
+        Assertions.assertEquals(0.0, advancedStatistics.getNumbersOfCommentsPerPost());
     }
 
     @Test
@@ -78,9 +78,9 @@ public class AdvancedStatisticsForumTestSuite {
         advancedStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        Assertions.assertEquals(0, advancedStatistics.numberOfComments);
-        Assertions.assertEquals(0.0, advancedStatistics.numbersOfCommentsPerPost);
-        Assertions.assertEquals(0.0, advancedStatistics.numbersOfCommentsPerPost);
+        Assertions.assertEquals(0, advancedStatistics.getNumberOfComments());
+        Assertions.assertEquals(0.0, advancedStatistics.getNumbersOfCommentsPerUser());
+        Assertions.assertEquals(0.0, advancedStatistics.getNumbersOfCommentsPerPost());
     }
 
     @Test
@@ -96,12 +96,12 @@ public class AdvancedStatisticsForumTestSuite {
         advancedStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        assertEquals(100, advancedStatistics.numberOfComments);
-        assertEquals(10, advancedStatistics.numberOfPosts);
-        assertEquals(10.0, advancedStatistics.numbersOfCommentsPerPost);
-        assertEquals(10, advancedStatistics.numberOfUsers);
-        assertEquals(10.0, advancedStatistics.numbersOfCommentsPerUser);
-        assertEquals(1.0, advancedStatistics.numbersOfPostsPerUser);
+        assertEquals(100, advancedStatistics.getNumberOfComments());
+        assertEquals(10, advancedStatistics.getNumberOfPosts());
+        assertEquals(10.0, advancedStatistics.getNumbersOfCommentsPerPost());
+        assertEquals(10, advancedStatistics.getNumberOfUsers());
+        assertEquals(10.0, advancedStatistics.getNumbersOfCommentsPerUser());
+        assertEquals(1.0, advancedStatistics.getNumbersOfPostsPerUser());
 
     }
 
@@ -118,12 +118,12 @@ public class AdvancedStatisticsForumTestSuite {
         advancedStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        assertEquals(99, advancedStatistics.numberOfComments);
-        assertEquals(30, advancedStatistics.numberOfPosts);
-        assertEquals(3.3, advancedStatistics.numbersOfCommentsPerPost);
-        assertEquals(10, advancedStatistics.numberOfUsers);
-        assertEquals(9.9, advancedStatistics.numbersOfCommentsPerUser);
-        assertEquals(3.0, advancedStatistics.numbersOfPostsPerUser);
+        assertEquals(99, advancedStatistics.getNumberOfComments());
+        assertEquals(30, advancedStatistics.getNumberOfPosts());
+        assertEquals(3.3, advancedStatistics.getNumbersOfCommentsPerPost());
+        assertEquals(10, advancedStatistics.getNumberOfUsers());
+        assertEquals(9.9, advancedStatistics.getNumbersOfCommentsPerUser());
+        assertEquals(3.0, advancedStatistics.getNumbersOfPostsPerUser());
     }
 
 
@@ -138,9 +138,9 @@ public class AdvancedStatisticsForumTestSuite {
         advancedStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        assertEquals(0, advancedStatistics.numberOfUsers);
-        assertEquals(0.0, advancedStatistics.numbersOfPostsPerUser);
-        assertEquals(0.0, advancedStatistics.numbersOfCommentsPerUser);
+        assertEquals(0, advancedStatistics.getNumberOfUsers());
+        assertEquals(0.0, advancedStatistics.getNumbersOfPostsPerUser());
+        assertEquals(0.0, advancedStatistics.getNumbersOfCommentsPerUser());
     }
 
     @Test
@@ -154,8 +154,8 @@ public class AdvancedStatisticsForumTestSuite {
         advancedStatistics.calculateAdvStatistics(statisticsMock);
 
         //Then
-        assertEquals(1000, advancedStatistics.numberOfUsers);
-        assertEquals(0.0, advancedStatistics.numbersOfPostsPerUser);
-        assertEquals(0.0, advancedStatistics.numbersOfCommentsPerUser);
+        assertEquals(1000, advancedStatistics.getNumberOfUsers());
+        assertEquals(0.0, advancedStatistics.getNumbersOfPostsPerUser());
+        assertEquals(0.0, advancedStatistics.getNumbersOfCommentsPerUser());
     }
 }

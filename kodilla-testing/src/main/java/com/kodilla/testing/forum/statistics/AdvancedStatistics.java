@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 
 public class AdvancedStatistics {
 
-    DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.##");
+    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.##");
 
     public int numberOfUsers = 0;
     public int numberOfPosts = 0;
@@ -12,6 +12,30 @@ public class AdvancedStatistics {
     public double numbersOfPostsPerUser = 0.0;
     public double numbersOfCommentsPerUser = 0.0;
     public double numbersOfCommentsPerPost = 0.0;
+
+    public int getNumberOfUsers() {
+        return numberOfUsers;
+    }
+
+    public int getNumberOfPosts() {
+        return numberOfPosts;
+    }
+
+    public int getNumberOfComments() {
+        return numberOfComments;
+    }
+
+    public double getNumbersOfPostsPerUser() {
+        return numbersOfPostsPerUser;
+    }
+
+    public double getNumbersOfCommentsPerUser() {
+        return numbersOfCommentsPerUser;
+    }
+
+    public double getNumbersOfCommentsPerPost() {
+        return numbersOfCommentsPerPost;
+    }
 
     public void calculateAdvStatistics(Statistics statistics) {
         numberOfUsers = statistics.usersNames().size();
