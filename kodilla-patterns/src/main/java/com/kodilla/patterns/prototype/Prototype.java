@@ -6,4 +6,5 @@ public class Prototype<T> implements Cloneable {
     protected T clone() throws CloneNotSupportedException {
         return (T)super.clone();
     }
+
 }
