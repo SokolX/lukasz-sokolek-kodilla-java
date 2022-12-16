@@ -26,6 +26,10 @@ public final class Library extends Prototype<Library> {
         return books;
     }
 
+    public int getNumberOfBooksInLibrary() {
+        return books.size();
+    }
+
     public Library shallowCopy() throws CloneNotSupportedException {
         return super.clone();
     }
@@ -33,9 +37,9 @@ public final class Library extends Prototype<Library> {
     public Library deepCopy() throws CloneNotSupportedException {
         Library clonedLibrary = super.clone();
         clonedLibrary.books = new HashSet<>();
-        for (Book theList: books) {
-            Book clonedList = new Book(theList.title(), theList.author(), theList.publicationDate());
-            clonedLibrary.getBooks().add(clonedList);
+        for (Book book : books) {
+            Book clonedBook = new Book(book.title(), book.author(), book.publicationDate());
+            clonedLibrary.getBooks().add(clonedBook);
         }
         return clonedLibrary;
     }

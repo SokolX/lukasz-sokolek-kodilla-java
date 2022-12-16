@@ -37,10 +37,22 @@ class LibraryTestSuite {
         System.out.println(library);
         System.out.println(shallowClonedLibrary);
         System.out.println(deepClonedLibrary);
-        assertEquals(2, library.getBooks().size());
-        assertEquals(2, shallowClonedLibrary.getBooks().size());
-        assertEquals(library.getBooks().size(),shallowClonedLibrary.getBooks().size());
-        assertEquals(1, deepClonedLibrary.getBooks().size());
-        assertNotEquals(library.getBooks().size(), deepClonedLibrary.getBooks().size());
+        int numerOfBookInLibrary = library.getNumberOfBooksInLibrary();
+        int numerOfBookInShallowClonedLibrary = shallowClonedLibrary.getNumberOfBooksInLibrary();
+        int numerOfBookInDeepClonedLibrary = deepClonedLibrary.getNumberOfBooksInLibrary();
+
+        assertEquals(2, numerOfBookInLibrary);
+        assertEquals(2, numerOfBookInShallowClonedLibrary);
+        assertTrue(isEquals(numerOfBookInLibrary, numerOfBookInShallowClonedLibrary));
+        assertEquals(1, numerOfBookInDeepClonedLibrary);
+        assertFalse(isEquals(numerOfBookInLibrary, numerOfBookInDeepClonedLibrary));
+    }
+
+    private boolean isEquals(int firstNumber, int secondNumber) {
+        if (firstNumber == secondNumber) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
