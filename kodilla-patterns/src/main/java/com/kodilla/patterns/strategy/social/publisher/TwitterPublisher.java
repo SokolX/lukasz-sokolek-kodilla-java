@@ -1,6 +1,6 @@
 package com.kodilla.patterns.strategy.social.publisher;
 
-public class TwitterPublisher implements SocialPublisher {
+public final class TwitterPublisher implements SocialPublisher {
 
     @Override
     public String share() {

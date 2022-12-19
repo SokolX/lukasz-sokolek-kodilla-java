@@ -2,7 +2,7 @@ package com.kodilla.patterns.strategy.social.user;
 
 import com.kodilla.patterns.strategy.social.publisher.SocialPublisher;
 
-public class User {
+public sealed class User permits YGeneration, ZGeneration, Millenials {
 
     private final String name;
     SocialPublisher socialPublisher;
