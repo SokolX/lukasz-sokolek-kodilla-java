@@ -102,7 +102,6 @@ public class AdvancedStatisticsForumTestSuite {
         assertEquals(10, advancedStatistics.getNumberOfUsers());
         assertEquals(10.0, advancedStatistics.getNumbersOfCommentsPerUser());
         assertEquals(1.0, advancedStatistics.getNumbersOfPostsPerUser());
-
     }
 
     @Test

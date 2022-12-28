@@ -6,12 +6,12 @@ public class AdvancedStatistics {
 
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.##");
 
-    public int numberOfUsers = 0;
-    public int numberOfPosts = 0;
-    public int numberOfComments = 0;
-    public double numbersOfPostsPerUser = 0.0;
-    public double numbersOfCommentsPerUser = 0.0;
-    public double numbersOfCommentsPerPost = 0.0;
+    public int numberOfUsers;
+    public int numberOfPosts;
+    public int numberOfComments;
+    public double numbersOfPostsPerUser;
+    public double numbersOfCommentsPerUser;
+    public double numbersOfCommentsPerPost;
 
     public int getNumberOfUsers() {
         return numberOfUsers;
@@ -44,7 +44,6 @@ public class AdvancedStatistics {
         numbersOfCommentsPerUser = countAverage(statistics.commentsCount(), statistics.usersNames().size());
         numbersOfPostsPerUser = countAverage(statistics.postsCount(), statistics.usersNames().size());
         numbersOfCommentsPerPost = countAverage(statistics.commentsCount(), statistics.postsCount());
-        showStatistics();
     }
 
     public void showStatistics() {
