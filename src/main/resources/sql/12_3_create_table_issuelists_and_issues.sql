@@ -1,0 +1,40 @@
+CREATE TABLE ISSUESLISTS
+(
+    ID SERIAL PRIMARY KEY,
+    NAME VARCHAR(100)
+);
+
+CREATE TABLE ISSUES
+(
+    ID SERIAL PRIMARY KEY,
+    ISSUESLIST_ID BIGINT UNSIGNED NOT NULL,
+    SUMMARY VARCHAR(100),
+    DESCRIPTION VARCHAR(300),
+    USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY (ISSUESLIST_ID) REFERENCES ISSUESLISTS(ID),
+    FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES USERS(ID)
+);
+
+INSERT INTO ISSUESLISTS VALUES (1, "ToDo");
+INSERT INTO ISSUESLISTS VALUES (2, "InProgress");
+INSERT INTO ISSUESLISTS VALUES (3, "Done");
+
+INSERT INTO ISSUES VALUES (1, 1, "Paying bills", "Energy", 1);
+INSERT INTO ISSUES VALUES (2, 1, "Paying bills", "Water", 2);
+INSERT INTO ISSUES VALUES (3, 1, "Paying bills", "Phone", 3);
+INSERT INTO ISSUES VALUES (4, 1, "Learn", "CSS", 4);
+INSERT INTO ISSUES VALUES (5, 1, "Learn", "JavaScript", 5);
+
+INSERT INTO ISSUES values (6, 2, "Learn", "English", 1);
+INSERT INTO ISSUES values (7, 2, "Learn", "Java", 2);
+INSERT INTO ISSUES values (8, 2, "Learn", "SQL", 3);
+INSERT INTO ISSUES values (9, 2, "Planed USA", "Ticket Metro", 4);
+INSERT INTO ISSUES values (10, 2, "Planed USA", "Buying insurance", 5);
+
+INSERT INTO ISSUES values (11, 3, "Planed USA", "Tickets NBA", 1);
+INSERT INTO ISSUES values (12, 3, "Planed USA", "Buy $", 2);
+INSERT INTO ISSUES values (13, 3, "Planed USA", "Sightseeing tour", 3);
+INSERT INTO ISSUES values (14, 3, "Paying bills", "Ticket to Cinema", 4);
+INSERT INTO ISSUES values (15, 3, "Paying bills", "Credit", 5);
+
+COMMIT;
