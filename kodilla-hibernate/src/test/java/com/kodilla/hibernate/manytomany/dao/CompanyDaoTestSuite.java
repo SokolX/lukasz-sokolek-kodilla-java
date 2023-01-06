@@ -2,9 +2,12 @@ package com.kodilla.hibernate.manytomany.dao;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,6 +16,14 @@ class CompanyDaoTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+
+    @Autowired
+    private EmployeeDao employeeDao;
+
+    @AfterEach
+    void cleanUp() {
+        companyDao.deleteAll();
+    }
 
     @Test
     void testSaveManyToMany() {
@@ -45,18 +56,72 @@ class CompanyDaoTestSuite {
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
 
+        List<Company> companiesStarttedByThreeLetter = companyDao.retrieveCompaniesWhoseNameBeginsWithTheFirstThreeLetters("Gre");
+
+        employeeDao.retrieveEmployeesByLastName("Clarckson");
         //Then
         assertNotEquals(0, softwareMachineId);
         assertNotEquals(0, dataMaestersId);
         assertNotEquals(0, greyMatterId);
+        assertEquals(1, companiesStarttedByThreeLetter.size());
+    }
 
-        //CleanUp
-        try {
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
-        } catch (Exception e) {
-            //do nothing
-        }
+    @Test
+    void testRetrieveCompaniesWhoseNameBeginsWithTheFirstThreeLetters() {
+        //Given
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaesters = new Company("Data Maesters");
+        Company greyMatter = new Company("Grey Matter");
+        Company softwareMatter = new Company("Software Matter");
+        Company softwareMaesters = new Company("Software Maesters");
+
+        //When
+        companyDao.save(softwareMachine);
+        companyDao.save(dataMaesters);
+        companyDao.save(greyMatter);
+        companyDao.save(softwareMatter);
+        companyDao.save(softwareMaesters);
+
+        List<Company> companiesStartedByThreeLetter = companyDao.retrieveCompaniesWhoseNameBeginsWithTheFirstThreeLetters("Sof");
+
+        //Then
+        assertEquals(3, companiesStartedByThreeLetter.size());
+    }
+
+    @Test
+    void testRetrieveEmployeesByLastName() {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        Employee michaelClarckson = new Employee("Michael", "Clarckson");
+        Employee johnClarckson = new Employee("John", "Clarckson");
+        Employee peterClarckson = new Employee("Peter", "Clarckson");
+        Employee markClarckson = new Employee("Mark", "Clarckson");
+        Employee lindaCleve = new Employee("Linda", "Cleve");
+
+        Company softwareMachine = new Company("Software Machine");
+
+        softwareMachine.getEmployees().add(johnSmith);
+        softwareMachine.getEmployees().add(stephanieClarckson);
+        softwareMachine.getEmployees().add(michaelClarckson);
+        softwareMachine.getEmployees().add(johnClarckson);
+        softwareMachine.getEmployees().add(peterClarckson);
+        softwareMachine.getEmployees().add(markClarckson);
+        softwareMachine.getEmployees().add(lindaCleve);
+
+        johnSmith.getCompanies().add(softwareMachine);
+        stephanieClarckson.getCompanies().add(softwareMachine);
+        michaelClarckson.getCompanies().add(softwareMachine);
+        johnClarckson.getCompanies().add(softwareMachine);
+        peterClarckson.getCompanies().add(softwareMachine);
+        markClarckson.getCompanies().add(softwareMachine);
+        lindaCleve.getCompanies().add(softwareMachine);
+
+        //When
+        companyDao.save(softwareMachine);
+        List<Employee> employeesByLastName = employeeDao.retrieveEmployeesByLastName("Clarckson");
+
+        //Then
+        assertEquals(5, employeesByLastName.size());
     }
 }

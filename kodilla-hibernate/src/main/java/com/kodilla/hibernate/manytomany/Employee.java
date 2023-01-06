@@ -6,9 +6,14 @@ import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQuery(
+        name = "Employee.retrieveEmployeesByLastName",
+        query = "FROM Employee WHERE lastname LIKE :LASTNAME"
+)
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
+
     private int id;
     private String firstname;
     private String lastname;
