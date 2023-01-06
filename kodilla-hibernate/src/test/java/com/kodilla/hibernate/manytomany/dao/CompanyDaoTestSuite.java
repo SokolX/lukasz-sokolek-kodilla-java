@@ -117,7 +117,7 @@ class CompanyDaoTestSuite {
 
         //When
         companyDao.save(softwareMachine);
-        List<Employee> employeesByLastName = employeeDao.findEmployeesByLastName("Cla");
+        List<Employee> employeesByLastName = employeeDao.findEmployeesByLastName("Clarckson");
 
         //Then
         assertEquals(5, employeesByLastName.size());
