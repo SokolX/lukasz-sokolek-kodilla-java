@@ -66,10 +66,12 @@ class InvoiceDaoTestSuite {
         //when
         invoiceDao.save(invoice);
         invoiceDao.deleteAll();
+        List<Invoice> invoices = (List<Invoice>) invoiceDao.findAll();
         List<Product> products = (List<Product>) productDao.findAll();
         List<Item> items = (List<Item>) itemDao.findAll();
 
         //then
+        assertEquals(0, invoices.size());
         assertEquals(0, products.size());
         assertEquals(0, items.size());
     }
