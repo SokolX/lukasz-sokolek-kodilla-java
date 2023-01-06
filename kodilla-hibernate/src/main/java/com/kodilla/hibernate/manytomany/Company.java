@@ -9,7 +9,7 @@ import java.util.List;
 @NamedNativeQuery(
         name = "Company.findCompaniesWhoseNameBeginsWithTheFirstThreeLetters",
         query = "SELECT * FROM COMPANIES" +
-                " WHERE COMPANY_NAME LIKE (CONCAT('%', :NAME, '%'))",
+                " WHERE COMPANY_NAME LIKE (CONCAT(:NAME, '%'))",
         resultClass = Company.class
 )
 @Entity

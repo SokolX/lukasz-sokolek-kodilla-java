@@ -66,22 +66,24 @@ class CompanyDaoTestSuite {
     void testFindCompaniesWhoseNameBeginsWithTheFirstThreeLetters() {
         //Given
         Company softwareMachine = new Company("Software Machine");
-        Company dataMaesters = new Company("Data Maesters");
+        Company dataMaestersSof = new Company("Data Maesters Sof");
         Company greyMatter = new Company("Grey Matter");
         Company softwareMatter = new Company("Software Matter");
-        Company softwareMaesters = new Company("Software Maesters");
+        Company softwareMaesters = new Company("SOFtware Maesters");
+        Company nightmareSoftMaesters = new Company("Nightmare Soft Maesters");
 
         //When
         companyDao.save(softwareMachine);
-        companyDao.save(dataMaesters);
+        companyDao.save(dataMaestersSof);
         companyDao.save(greyMatter);
         companyDao.save(softwareMatter);
         companyDao.save(softwareMaesters);
+        companyDao.save(nightmareSoftMaesters);
 
-        List<Company> companiesWhoseNameBeginsWithTheFirstThreeLetters = companyDao.findCompaniesWhoseNameBeginsWithTheFirstThreeLetters("Sof");
+        List<Company> companiesWhoseNameBeginsWithTheFirstThreeLettersLowerCase = companyDao.findCompaniesWhoseNameBeginsWithTheFirstThreeLetters("Sof");
 
         //Then
-        assertEquals(3, companiesWhoseNameBeginsWithTheFirstThreeLetters.size());
+        assertEquals(3, companiesWhoseNameBeginsWithTheFirstThreeLettersLowerCase.size());
     }
 
     @Test
@@ -115,7 +117,7 @@ class CompanyDaoTestSuite {
 
         //When
         companyDao.save(softwareMachine);
-        List<Employee> employeesByLastName = employeeDao.findEmployeesByLastName("Clarckson");
+        List<Employee> employeesByLastName = employeeDao.findEmployeesByLastName("Cla");
 
         //Then
         assertEquals(5, employeesByLastName.size());
