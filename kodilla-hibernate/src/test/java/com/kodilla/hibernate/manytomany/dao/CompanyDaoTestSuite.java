@@ -56,18 +56,14 @@ class CompanyDaoTestSuite {
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
 
-        List<Company> companiesStarttedByThreeLetter = companyDao.retrieveCompaniesWhoseNameBeginsWithTheFirstThreeLetters("Gre");
-
-        employeeDao.retrieveEmployeesByLastName("Clarckson");
         //Then
         assertNotEquals(0, softwareMachineId);
         assertNotEquals(0, dataMaestersId);
         assertNotEquals(0, greyMatterId);
-        assertEquals(1, companiesStarttedByThreeLetter.size());
     }
 
     @Test
-    void testRetrieveCompaniesWhoseNameBeginsWithTheFirstThreeLetters() {
+    void testFindCompaniesWhoseNameBeginsWithTheFirstThreeLetters() {
         //Given
         Company softwareMachine = new Company("Software Machine");
         Company dataMaesters = new Company("Data Maesters");
@@ -82,14 +78,14 @@ class CompanyDaoTestSuite {
         companyDao.save(softwareMatter);
         companyDao.save(softwareMaesters);
 
-        List<Company> companiesStartedByThreeLetter = companyDao.retrieveCompaniesWhoseNameBeginsWithTheFirstThreeLetters("Sof");
+        List<Company> companiesWhoseNameBeginsWithTheFirstThreeLetters = companyDao.findCompaniesWhoseNameBeginsWithTheFirstThreeLetters("Sof");
 
         //Then
-        assertEquals(3, companiesStartedByThreeLetter.size());
+        assertEquals(3, companiesWhoseNameBeginsWithTheFirstThreeLetters.size());
     }
 
     @Test
-    void testRetrieveEmployeesByLastName() {
+    void testFindEmployeesByLastName() {
         //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
@@ -119,7 +115,7 @@ class CompanyDaoTestSuite {
 
         //When
         companyDao.save(softwareMachine);
-        List<Employee> employeesByLastName = employeeDao.retrieveEmployeesByLastName("Clarckson");
+        List<Employee> employeesByLastName = employeeDao.findEmployeesByLastName("Clarckson");
 
         //Then
         assertEquals(5, employeesByLastName.size());

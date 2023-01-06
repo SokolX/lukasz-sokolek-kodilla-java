@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NamedQuery(
-        name = "Employee.retrieveEmployeesByLastName",
+        name = "Employee.findEmployeesByLastName",
         query = "FROM Employee WHERE lastname LIKE :LASTNAME"
 )
 @Entity
