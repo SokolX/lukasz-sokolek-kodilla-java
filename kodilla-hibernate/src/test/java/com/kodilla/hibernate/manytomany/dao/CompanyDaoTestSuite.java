@@ -87,6 +87,30 @@ class CompanyDaoTestSuite {
     }
 
     @Test
+    void testFindCompaniesWhoseNameBeginsWithTheFirstThreeLettersAS() {
+        //Given
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaestersSof = new Company("Data Maesters Sof");
+        Company greyMatter = new Company("Grey Matter");
+        Company softwareMatter = new Company("Software Matter");
+        Company softwareMaesters = new Company("SOFtware Maesters");
+        Company nightmareSoftMaesters = new Company("Nightmare Soft Maesters");
+
+        //When
+        companyDao.save(softwareMachine);
+        companyDao.save(dataMaestersSof);
+        companyDao.save(greyMatter);
+        companyDao.save(softwareMatter);
+        companyDao.save(softwareMaesters);
+        companyDao.save(nightmareSoftMaesters);
+
+        List<Company> companiesWhoseNameBeginsWithTheFirstThreeLettersLowerCase = companyDao.findByNameStartingWith("Sof");
+
+        //Then
+        assertEquals(3, companiesWhoseNameBeginsWithTheFirstThreeLettersLowerCase.size());
+    }
+
+    @Test
     void testFindEmployeesByLastName() {
         //Given
         Employee johnSmith = new Employee("John", "Smith");
