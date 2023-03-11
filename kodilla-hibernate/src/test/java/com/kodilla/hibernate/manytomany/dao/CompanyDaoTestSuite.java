@@ -2,6 +2,8 @@ package com.kodilla.hibernate.manytomany.dao;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
+import com.kodilla.hibernate.manytomany.facade.CompanyException;
+import com.kodilla.hibernate.manytomany.facade.CompanyFacade;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +22,13 @@ class CompanyDaoTestSuite {
     @Autowired
     private EmployeeDao employeeDao;
 
+    @Autowired
+    private CompanyFacade companyFacade;
+
     @AfterEach
     void cleanUp() {
         companyDao.deleteAll();
+        employeeDao.deleteAll();
     }
 
     @Test
@@ -111,6 +117,38 @@ class CompanyDaoTestSuite {
     }
 
     @Test
+    void testFindCompaniesByPhraseOfName() throws CompanyException {
+        //Given
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaestersSof = new Company("Data Maesters Sof");
+        Company greyMatter = new Company("Grey Matter");
+        Company softwareMatter = new Company("Software Matter");
+        Company softwareMaesters = new Company("SOFtware Maesters");
+        Company nightmareSoftMaesters = new Company("Nightmare Soft Maesters");
+
+        //When
+        companyDao.save(softwareMachine);
+        companyDao.save(dataMaestersSof);
+        companyDao.save(greyMatter);
+        companyDao.save(softwareMatter);
+        companyDao.save(softwareMaesters);
+        companyDao.save(nightmareSoftMaesters);
+
+        List<Company> companiesWhoseNameBeginsWithTheFirstThreeLettersLowerCase = companyFacade.findCompanies("Sof");
+
+        //Then
+        assertEquals(5, companiesWhoseNameBeginsWithTheFirstThreeLettersLowerCase.size());
+    }
+
+    @Test
+    void testExceptionWhenDoesntExistCompaniesByPhraseOfName() {
+        //Given
+
+        //When + Then
+        assertThrows(CompanyException.class, () -> companyFacade.findCompanies("Sof"));
+    }
+
+    @Test
     void testFindEmployeesByLastName() {
         //Given
         Employee johnSmith = new Employee("John", "Smith");
@@ -145,5 +183,30 @@ class CompanyDaoTestSuite {
 
         //Then
         assertEquals(5, employeesByLastName.size());
+    }
+
+    @Test
+    void testFindEmployeesByPhraseOfLastname() throws CompanyException {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        Employee michaelClarckson = new Employee("Michael", "Clarckson");
+
+        //When
+        employeeDao.save(johnSmith);
+        employeeDao.save(stephanieClarckson);
+        employeeDao.save(michaelClarckson);
+        List<Employee> employeesByLastName = companyFacade.findEmployees("rcks");
+
+        //Then
+        assertEquals(2, employeesByLastName.size());
+    }
+
+    @Test
+    void testExceptionWhenDoesntExistEmployeesByPhraseOfName() {
+        //Given
+
+        //When + Then
+        assertThrows(CompanyException.class, () -> companyFacade.findEmployees("Sof"));
     }
 }

@@ -1,9 +1,9 @@
 package com.kodilla.hibernate.task;
 
 import com.kodilla.hibernate.tasklist.TaskList;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @NamedQueries({
@@ -26,6 +26,7 @@ import java.util.Date;
                 " WHERE DATEDIFF(DATE_ADD(CREATED, INTERVAL DURATION DAY), NOW()) > 5",
         resultClass = Task.class
 )
+
 @Entity
 @Table(name = "TASKS")
 public class Task {

@@ -1,14 +1,18 @@
 package com.kodilla.hibernate.manytomany;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 @NamedQuery(
         name = "Employee.findEmployeesByLastName",
         query = "FROM Employee WHERE lastname LIKE :LASTNAME"
+)
+
+@NamedQuery(
+        name = "Employee.findEmployeesByPhraseOfLastname",
+        query = "FROM Employee WHERE lastname LIKE (CONCAT('%',:LASTNAME, '%'))"
 )
 @Entity
 @Table(name = "EMPLOYEES")

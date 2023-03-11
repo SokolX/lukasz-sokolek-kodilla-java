@@ -1,19 +1,25 @@
 package com.kodilla.hibernate.manytomany;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 @NamedNativeQuery(
         name = "Company.findCompaniesWhoseNameBeginsWithTheFirstThreeLetters",
-        query = "SELECT * FROM COMPANIES" +
-                " WHERE COMPANY_NAME LIKE (CONCAT(:NAME, '%'))",
+        query = "SELECT * FROM companies" +
+                " WHERE company_name LIKE (CONCAT(:NAME, '%'))",
+        resultClass = Company.class
+)
+
+@NamedNativeQuery(
+        name = "Company.findCompaniesByPhraseOfName",
+        query = "SELECT * FROM companies" +
+                " WHERE company_name LIKE (CONCAT('%',:NAME, '%'))",
         resultClass = Company.class
 )
 @Entity
-@Table(name = "COMPANIES")
+@Table(name = "companies")
 public class Company {
 
     private int id;
