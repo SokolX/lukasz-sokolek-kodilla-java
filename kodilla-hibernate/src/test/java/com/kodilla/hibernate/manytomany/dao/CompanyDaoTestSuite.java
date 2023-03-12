@@ -125,8 +125,6 @@ class CompanyDaoTestSuite {
         Company softwareMatter = new Company("Software Matter");
         Company softwareMaesters = new Company("SOFtware Maesters");
         Company nightmareSoftMaesters = new Company("Nightmare Soft Maesters");
-
-        //When
         companyDao.save(softwareMachine);
         companyDao.save(dataMaestersSof);
         companyDao.save(greyMatter);
@@ -134,6 +132,7 @@ class CompanyDaoTestSuite {
         companyDao.save(softwareMaesters);
         companyDao.save(nightmareSoftMaesters);
 
+        //When
         List<Company> companiesWhoseNameBeginsWithTheFirstThreeLettersLowerCase = companyFacade.findCompanies("Sof");
 
         //Then

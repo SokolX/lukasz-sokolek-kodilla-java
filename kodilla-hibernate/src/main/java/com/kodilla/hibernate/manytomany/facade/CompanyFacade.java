@@ -30,7 +30,7 @@ public class CompanyFacade {
         LOGGER.info("Starting findCompanies by " + company);
         try {
             List<Company> companiesByName = companyDao.findCompaniesByPhraseOfName(company);
-            if (companiesByName.size() == 0) {
+            if (companiesByName.isEmpty()) {
                 LOGGER.error(CompanyException.ERR_NO_SUCH_COMPANY);
                 throw new CompanyException(CompanyException.ERR_NO_SUCH_COMPANY);
             }
