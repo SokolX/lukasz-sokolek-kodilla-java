@@ -41,6 +41,23 @@ public class Converter {
         return hexadecimalResultString;
     }
 
+    public String convertDecimalToBinaryNumber(int decimal) {
+
+        String binaryResultString = "";
+        if(decimal == 0) {
+            return mapIntToHex(decimal);
+        }
+
+        while(decimal != 0) {
+            int rest = decimal / 2;
+            int result = decimal % 2;
+            decimal = rest;
+            binaryResultString = result + binaryResultString;
+        }
+
+        return binaryResultString;
+    }
+
     private String mapIntToHex(int hex) {
         return DECIMAL_TO_HEXADECIMAL_MAP.get(hex);
     }
