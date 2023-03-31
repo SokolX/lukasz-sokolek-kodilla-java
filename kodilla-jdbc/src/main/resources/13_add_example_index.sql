@@ -1,0 +1,79 @@
+CREATE TABLE PHONES (
+                        PHONE_ID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                        PHONENUM INT(9),
+                        FIRSTNAME VARCHAR(50),
+                        LASTNAME VARCHAR(50)
+);
+
+-- DODANIE PROCEDURY
+DELIMITER $$
+
+CREATE PROCEDURE FillTestData()
+BEGIN
+    DECLARE K INT DEFAULT 0;
+    WHILE (K < 100000) DO
+            INSERT INTO PHONES (PHONENUM,
+                                FIRSTNAME,
+                                LASTNAME)
+            VALUES(ROUND(RAND()*1000000000),
+                   CONCAT('Firstname number ', K),
+                   CONCAT('Lastname number ', K));
+            IF (MOD(K, 5000) = 0) THEN
+                COMMIT;
+END IF;
+            SET K = K + 1;
+END WHILE;
+COMMIT;
+END $$
+
+DELIMITER ;
+
+-- WYWOLANIE PROCEDURY
+CALL FillTestData();
+
+-- TWORZENIE TABELI ZE STATYSTYKAMI
+CREATE TABLE PHONESTATS (
+                            ID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                            RANGE_FROM INT(11),
+                            RANGE_TO INT(11),
+                            QUANTITY INT(11)
+);
+
+
+-- DODANIE PROCEDURY
+DELIMITER $$
+
+CREATE PROCEDURE CalcPhoneStats()
+BEGIN
+    DECLARE K INT(11) DEFAULT 0;
+    DECLARE QTY INT(11);
+DELETE FROM PHONESTATS;
+COMMIT;
+WHILE (K < 100000000) DO
+SELECT COUNT(*)
+FROM PHONES
+WHERE PHONENUM BETWEEN K-99999 AND K
+    INTO QTY;
+INSERT INTO PHONESTATS (RANGE_FROM, RANGE_TO, QUANTITY)
+VALUES (K-99999, K, QTY);
+COMMIT;
+SET K = K + 100000;
+END WHILE;
+END $$
+
+DELIMITER ;
+
+-- WYWOLANIE PROCEDURY
+CALL CalcPhoneStats();
+
+SELECT * FROM PHONESTATS;
+
+EXPLAIN SELECT
+            COUNT(*)
+        FROM
+            PHONES
+        WHERE
+            PHONENUM BETWEEN 1 AND 100000;
+
+-- UTWORZENIE PROCEDURY
+CREATE INDEX PHONENO ON PHONES (PHONENUM);

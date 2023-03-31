@@ -5,7 +5,7 @@ DELIMITER $$
 CREATE PROCEDURE UserData(id_user INT)
 BEGIN
 IF id_user <= 0 THEN
-        SELECT 'id_user cannot be lower then 1' AS ERROR_INFO;
+        SELECT 'id_user cannot be lower than 1' AS ERROR_INFO;
     ELSE
         SELECT READER_ID, FIRSTNAME, LASTNAME
         FROM READERS
