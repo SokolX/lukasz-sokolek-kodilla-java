@@ -24,6 +24,14 @@ public class Converter {
         put(15, "F");
     }};
 
+    public int convertStringToInteger(String text) throws NumberFormatException {
+        try {
+            return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException();
+        }
+    }
+
     public String convertDecimalToHexadecimal(int decimal) {
         String hexadecimalResultString = "";
 

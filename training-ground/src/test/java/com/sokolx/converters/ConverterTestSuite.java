@@ -24,4 +24,18 @@ class ConverterTestSuite {
         assertEquals("1000110", converter.convertDecimalToBinaryNumber(70));
     }
 
+    @Test
+    void shouldReturnIntegerFromString() {
+        //given & when & then
+        assertEquals(2040, converter.convertStringToInteger("2040"));
+    }
+
+    @Test
+    void shouldReturnNumberFormatExceptionWhenInputStringContainsSpecificMark() {
+        //given & when & then
+        assertThrows(NumberFormatException.class, () -> converter.convertStringToInteger("20,40"));
+        assertThrows(NumberFormatException.class, () -> converter.convertStringToInteger("20B40"));
+        assertThrows(NumberFormatException.class, () -> converter.convertStringToInteger("20.40"));
+    }
+
 }
