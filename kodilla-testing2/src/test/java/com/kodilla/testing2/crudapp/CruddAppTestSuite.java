@@ -23,7 +23,7 @@ public class CruddAppTestSuite {
 
     @BeforeEach
     public void initTests() {
-        driver = WebDriverConfig.getDriver(WebDriverConfig.CHROME);
+        driver = WebDriverConfig.getDriver(WebDriverConfig.FIREFOX);
         driver.get(BASE_URL);
         generator = new Random();
     }
@@ -38,6 +38,7 @@ public class CruddAppTestSuite {
         String taskName = createCrudAppTestTask();
         sendTestTaskToTrello(taskName);
         assertTrue(checkTaskExistsInTrello(taskName));
+        deleteTestTaskTrello(taskName);
     }
 
     @Test
@@ -117,5 +118,28 @@ public class CruddAppTestSuite {
         driverTrello.close();
 
         return result;
+    }
+
+    private void deleteTestTaskTrello(String taskName) throws InterruptedException {
+
+        driver = WebDriverConfig.getDriver(WebDriverConfig.FIREFOX);
+        driver.get(BASE_URL);
+        Thread.sleep(10000);
+        while(!driver.findElement(By.xpath("//select[1]")).isDisplayed());
+
+        driver.findElements(
+                        By.xpath("//form[@class=\"datatable__row\"]")).stream()
+                .filter(anyForm ->
+                        anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]"))
+                                .getText().equals(taskName))
+                .forEach(theForm -> {
+                    WebElement selectElement = theForm.findElement(By.xpath(".//select[1]"));
+                    Select select = new Select(selectElement);
+                    select.selectByIndex(1);
+
+                    WebElement buttonDeleteCard =
+                            theForm.findElement(By.xpath(".//button[@data-task-delete-button=\"\"]"));
+                    buttonDeleteCard.click();
+                });
     }
 }
